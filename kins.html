@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gaming Name Generator</title>
+  <style>
+    body {
+      background-color: #990000;
+      color: #FFFFFF;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: #FFD700;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      color: #FFD700;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    button {
+      background-color: #FFD700;
+      color: #990000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: 'Arial', sans-serif;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #FFC300;
+    }
+
+    #result {
+      font-size: 24px;
+      margin-top: 20px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .custom-font {
+      font-family: 'Custom Font', sans-serif;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Custom Font';
+      src: url('font.woff2') format('woff2');
+      /* Replace 'font.woff2' with the path to your custom font file */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gaming Name Generator</h1>
+    <label for="name">Enter Your Name:</label>
+    <input type="text" id="name" placeholder="Your Name">
+    <br><br>
+    <button onclick="generateNames()">Generate Names</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function generateNames() {
+      var nameInput = document.getElementById("name").value.trim();
+      if (nameInput === "") {
+        alert("Please enter your name.");
+        return;
+      }
+
+      var symbols = ["🎮", "🌐", "🐲", "👻😈👾", "𐐘💥╾━╤デ╦︻ඞා", "☠️", "🎮", "🌌", "⚜", "👺", "🌊", "࿐ ࿔*:･ﾟ", "࿐ ࿔*:･ﾟ", "🐎", "🕶️", "🖐🏼", "( ᵒ̴̶̷᷄◡̶͂ᵒ̴̶̷᷅ )و", "( ᵒ̴̶̷᷄◡̶͂ᵒ̴̶̷᷅ )و", "🐉🔥🐉🔥", "(∩｀-´)⊃━☆ﾟ.*･｡ﾟ", "╦̵̵̿╤─", "𝖓𝖎𝖌𝖌𝖆", "ΔΜØŇǤ ỮŞ ඞ", "꧁꧂", "♛", "☣️", "🚀", "👾", "😎", "( -_•)╦̵̵̿╤─", "🤖", "🌀", "🌙🛏️💤", "🏴‍☠️🏴‍☠️", "(„• ֊ •„)੭", "𓆝 𓆟 𓆞 𓆝 𓆟", "𐐘⚔ඞ", "𓆩♡𓆪"];
+
+      var result = "";
+
+      for (var i = 0; i < 25; i++) {
+        var generatedName = nameInput;
+        var symbolsCount = Math.min(Math.floor(Math.random() * 4), nameInput.length);
+        for (var j = 0; j < symbolsCount; j++) {
+          var randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+          var randomPosition = Math.floor(Math.random() * (generatedName.length + 1));
+          generatedName = generatedName.substring(0, randomPosition) + randomSymbol + generatedName.substring(randomPosition);
+        }
+
+        var randomFont = Math.random() < 0.5 ? "font-style: italic;" : "font-weight: bold;";
+        result += '<span class="custom-font" style="' + randomFont + '">' + generatedName + "</span><br><br>";
+      }
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
