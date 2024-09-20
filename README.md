@@ -1,1 +1,1 @@
-# Gaming_nickname_generator
+# Gaming_nickname_generator  generate cool gaming nicknames
